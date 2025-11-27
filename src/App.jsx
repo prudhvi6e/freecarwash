@@ -1,27 +1,32 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import ContentSections from './components/ContentSections';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import Franchise from './pages/Franchise';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   return (
-    <div className="body_wrap">
-      <div className="page_wrap">
-        <Header />
-        <div className="page_content_wrap">
-          <div className="content_wrap_fullscreen">
-            <div className="content">
-              <article className="post_item_single post_type_page page type-page status-publish hentry" id="post-37192">
-                <div className="post_content entry-content">
-                  <ContentSections />
-                </div>
-              </article>
+    <Router>
+      <div className="body_wrap">
+        <div className="page_wrap">
+          <Header />
+          <div className="page_content_wrap">
+            <div className="content_wrap_fullscreen">
+              <div className="content">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/franchise" element={<Franchise />} />
+                  <Route path="/contact-us" element={<ContactUs />} />
+                </Routes>
+              </div>
             </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-    </div>
+    </Router>
   );
 }
 
